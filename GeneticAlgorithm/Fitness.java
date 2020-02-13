@@ -1,16 +1,19 @@
 package ChadCollinsAsmt2;
 
+import java.util.*;
+
 public class Fitness {
 
     static int movesLen;
     static int[][] solution;
 
-    public static void setSolution(int[][] newSolution, int n) {
-        movesLen = (n*n)+n+1;
-        solution = new int[movesLen][2];
+    public static void setSolution(int[][] newSolution) {
         solution = newSolution;
     }
 
+    // Fitness function. Gets the fitness of an individual by comparing the amount
+    // of correct moves vs the length of the solution set.
+    // Returns a fitness number.
     public static int getFitness(Individual ind) {
         int fitness = 0;
         for(int i = 0; i < ind.size() && i < solution.length; i++) {
@@ -22,7 +25,6 @@ public class Fitness {
     }
 
     public static int getMaxFitness() {
-        int maxFitness = solution.length;
-        return maxFitness;
+        return solution.length;
     }
 }
